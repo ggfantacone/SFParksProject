@@ -31,6 +31,8 @@ levels(rr$FQ)
 typeof(rr$Acres)
 rr$PSA
 
+# testing github copilot
+
 rr %>%
   filter(PSA == "PSA2") %>%
   ggplot(aes(x = FQ, y = Score, color = FQ, group = FQ)) + 
