@@ -1,0 +1,41 @@
+---
+title: "kaggle biostats tutorial"
+output: html_document
+date: "2024-02-05"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE) 
+
+library(tidyverse)
+library(pubtheme)
+
+options(ggplot2.discrete.fill = c('#000000', '#8A0308', '#710193'), ggplot2.discrete.color = c('#000000', '#8A0308', '#710193'))
+```
+
+
+```{r setup}
+#getwd()
+
+parks <- read.csv("SF_Park_Scores.csv")
+head(parks)
+```
+
+```{r restrooms}
+rr <- parks %>%
+  filter(Facility.Type == "Restroom") %>%
+  select(-c(Facility.Type, State)) %>%
+  mutate(FQ = factor(FQ))
+
+head(rr)
+levels(rr$FQ)
+typeof(rr$Acres)
+rr$PSA
+
+rr %>%
+  filter(PSA == "PSA2") %>%
+  ggplot(aes(x = FQ, y = Score, color = FQ, group = FQ)) + 
+  geom_point() + 
+  geom_line() +
+  theme(axis.text.x = element_text(angle = 90))
+```
