@@ -16,7 +16,6 @@ options(ggplot2.discrete.fill = c('#000000', '#8A0308', '#710193'), ggplot2.disc
 
 ```{r setup}
 #getwd()
-
 parks <- read.csv("SF_Park_Scores.csv")
 head(parks)
 ```
@@ -37,5 +36,5 @@ rr %>%
   ggplot(aes(x = FQ, y = Score, color = FQ, group = FQ)) + 
   geom_point() + 
   geom_line() +
-  theme(axis.text.x = element_text(angle = 90))
+  theme(axis.text.x = element_text(angle = 90))  
 ```
